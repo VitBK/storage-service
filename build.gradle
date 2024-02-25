@@ -5,7 +5,7 @@ plugins {
 }
 
 group = 'com.practice'
-version = '0.0.1-SNAPSHOT'
+version = ''
 
 java {
     sourceCompatibility = '21'
@@ -30,6 +30,7 @@ dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-web'
     implementation 'org.liquibase:liquibase-core'
     implementation 'org.springframework.cloud:spring-cloud-starter-netflix-eureka-client'
+    implementation group: 'software.amazon.awssdk', name: 's3', version: '2.22.13'
     compileOnly 'org.projectlombok:lombok'
     developmentOnly 'org.springframework.boot:spring-boot-devtools'
     runtimeOnly 'org.postgresql:postgresql'

@@ -1,1 +1,21 @@
+server:
+  port: 8084
+spring:
+  application:
+    name: storage-service
+  datasource:
+    driver-class-name: 'org.postgresql.Driver'
+    url: ${DATABASE_URL}
+    username: ${DATABASE_USERNAME}
+    password: ${DATABASE_PASSWORD}
+  liquibase:
+    change-log: classpath:liquibase-changelog.xml
 
+s3:
+  host: 'http://s3.localhost.localstack.cloud'
+  port: '4566'
+
+eureka:
+  client:
+    service-url:
+      defaultZone: ${EUREKA_URL}

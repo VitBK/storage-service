@@ -10,6 +10,10 @@ spring:
     password: ${DATABASE_PASSWORD}
   liquibase:
     change-log: classpath:liquibase-changelog.xml
+  cloud:
+    openfeign:
+      micrometer:
+        enabled: true
 
 s3:
   host: 'http://s3.localhost.localstack.cloud'

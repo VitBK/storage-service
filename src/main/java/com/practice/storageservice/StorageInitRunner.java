@@ -1,5 +1,6 @@
 package com.practice.storageservice;
 
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.ApplicationArguments;
@@ -14,6 +15,7 @@ import software.amazon.awssdk.services.s3.model.CreateBucketRequest;
 import java.net.URI;
 
 @Component
+@Slf4j
 public class StorageInitRunner implements ApplicationRunner {
 
 
@@ -33,6 +35,7 @@ public class StorageInitRunner implements ApplicationRunner {
 
     @Override
     public void run(ApplicationArguments args) {
+        log.info("Starting to init S3 storages");
         s3Uri = URI.create(s3_host + ":" + s3_port);
         s3Client = S3Client.builder()
                 .endpointOverride(s3Uri)
@@ -48,5 +51,6 @@ public class StorageInitRunner implements ApplicationRunner {
                 .bucket(PERMANENT_BUCKET)
                 .build());
         storageService.createStorage(StorageType.PERMANENT, PERMANENT_BUCKET);
+        log.info("Successfully init default S3 storages");
     }
 }
